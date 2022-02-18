@@ -23,7 +23,7 @@ impl Matrix{
         *self = matrix_result;
     }
 
-    fn identity(&mut self){
+    pub fn identity(&mut self){
         for i in 0..self.matrixArray.len(){
             for v in 0..self.matrixArray[0].len(){
                 if i == v{

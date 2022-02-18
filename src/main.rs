@@ -12,4 +12,7 @@ fn main(){
     matrix2.matrixArray = vec![vec![7,8],vec![9,10],vec![11,12]];
     matrix2.multiply_matrixes(matrix1);
     println!("{}", matrix2);
+    matrix2 = Matrix::new(4,4);
+    matrix2.identity();
+    println!("{}", matrix2);
 }

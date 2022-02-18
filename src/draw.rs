@@ -1,7 +1,14 @@
 use crate::Image;
 use crate::Matrix;
+use crate::Color;
 
 impl Image{
+    pub fn draw_lines(&mut self, matrix: Matrix, color: Color){
+        for i in (0..matrix.matrix_array[0].len()).step_by(2){
+            self.draw_line(matrix.matrix_array[0][i], matrix.matrix_array[1][i], matrix.matrix_array[0][i+1], matrix.matrix_array[1][i+1], color);
+        }
+    }
+
     pub fn draw_line(&mut self, mut x0: i32, mut y0: i32, mut x1: i32, mut y1: i32, color: Color){
         if x0 > x1{
             let mut tmp = x0;

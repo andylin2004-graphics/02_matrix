@@ -1,9 +1,11 @@
 use image::Image;
 use color::Color;
 use matrix::Matrix;
+use draw::*;
 mod image;
 mod color;
 mod matrix;
+mod draw;
 
 fn main(){
     let mut matrix1 = Matrix::new(4,4);

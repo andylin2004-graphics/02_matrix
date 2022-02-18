@@ -1,4 +1,5 @@
-use crate::image::Image;
+use crate::Image;
+use crate::Matrix;
 
 impl Image{
     pub fn draw_line(&mut self, mut x0: i32, mut y0: i32, mut x1: i32, mut y1: i32, color: Color){
@@ -76,5 +77,31 @@ impl Image{
                 d -= a; // basically adding
             }
         }
+    }
+}
+
+impl Matrix{
+    pub fn add_edge(&mut self, x0: i32, y0: i32, z0: i32, x1: i32, y1: i32, z1: i32){
+        if self.matrix_array.len() < 4{
+            *self = Matrix::new(4,0);
+        }
+        self.matrix_array[0].push(x0);
+        self.matrix_array[0].push(x1);
+        self.matrix_array[1].push(y0);
+        self.matrix_array[1].push(y1);
+        self.matrix_array[2].push(z0);
+        self.matrix_array[2].push(z1);
+        self.matrix_array[3].push(1);
+        self.matrix_array[3].push(1);
+    }
+
+    pub fn add_point(&mut self, x: i32, y: i32, z: i32){
+        if self.matrix_array.len() < 4{
+            *self = Matrix::new(4,0);
+        }
+        self.matrix_array[0].push(x);
+        self.matrix_array[1].push(y);
+        self.matrix_array[2].push(z);
+        self.matrix_array[3].push(1);
     }
 }

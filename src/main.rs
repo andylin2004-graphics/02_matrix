@@ -18,7 +18,7 @@ fn main(){
     let mut edges = Matrix::new(1,0);
 
     println!("Testing add_edge. Adding (1, 2, 3), (4, 5, 6) m2 =");
-    m2.add_edge(1,2,3,4,5,6);
+    m2.add_edge(1.0,2.0,3.0,4.0,5.0,6.0);
     m2.print_matrix();
 
     println!("Testing ident. m1 = ");
@@ -31,8 +31,8 @@ fn main(){
 
     println!("Testing Matrix mult. m1 =");
     m1 = Matrix::new(0,0);
-    m1.add_edge(1,2,3,4,5,6);
-    m1.add_edge(7,8,9,10,11,12);
+    m1.add_edge(1.0,2.0,3.0,4.0,5.0,6.0);
+    m1.add_edge(7.0,8.0,9.0,10.0,11.0,12.0);
     m1.print_matrix();
 
     println!("\nTesting Matrix mult. m1 * m2 =");

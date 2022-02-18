@@ -1,12 +1,12 @@
 use std::fmt;
 
 pub struct Matrix{
-    pub matrix_array: Vec<Vec<i32>>,
+    pub matrix_array: Vec<Vec<f32>>,
 }
 
 impl Matrix{
     pub fn new(row: usize, col: usize) -> Matrix{
-        Matrix{matrix_array: vec![vec![0; col]; row],}
+        Matrix{matrix_array: vec![vec![0.0; col]; row],}
     }
 
     pub fn multiply_matrixes(&mut self, m1: Matrix){
@@ -26,9 +26,9 @@ impl Matrix{
         for i in 0..self.matrix_array.len(){
             for v in 0..self.matrix_array[0].len(){
                 if i == v{
-                    self.matrix_array[i][v] = 1;
+                    self.matrix_array[i][v] = 1.0;
                 }else{
-                    self.matrix_array[i][v] = 0;
+                    self.matrix_array[i][v] = 0.0;
                 }
             }
         }

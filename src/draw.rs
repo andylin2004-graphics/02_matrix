@@ -5,7 +5,7 @@ use crate::Color;
 impl Image{
     pub fn draw_lines(&mut self, matrix: Matrix, color: Color){
         for i in (0..matrix.matrix_array[0].len()).step_by(2){
-            self.draw_line(matrix.matrix_array[0][i], matrix.matrix_array[1][i], matrix.matrix_array[0][i+1], matrix.matrix_array[1][i+1], color);
+            self.draw_line(matrix.matrix_array[0][i] as i32, matrix.matrix_array[1][i] as i32, matrix.matrix_array[0][i+1] as i32, matrix.matrix_array[1][i+1] as i32, color);
         }
     }
 
@@ -88,7 +88,7 @@ impl Image{
 }
 
 impl Matrix{
-    pub fn add_edge(&mut self, x0: i32, y0: i32, z0: i32, x1: i32, y1: i32, z1: i32){
+    pub fn add_edge(&mut self, x0: f32, y0: f32, z0: f32, x1: f32, y1: f32, z1: f32){
         if self.matrix_array.len() < 4{
             *self = Matrix::new(4,0);
         }
@@ -98,17 +98,17 @@ impl Matrix{
         self.matrix_array[1].push(y1);
         self.matrix_array[2].push(z0);
         self.matrix_array[2].push(z1);
-        self.matrix_array[3].push(1);
-        self.matrix_array[3].push(1);
+        self.matrix_array[3].push(1.0);
+        self.matrix_array[3].push(1.0);
     }
 
-    pub fn add_point(&mut self, x: i32, y: i32, z: i32){
+    pub fn add_point(&mut self, x: f32, y: f32, z: f32){
         if self.matrix_array.len() < 4{
             *self = Matrix::new(4,0);
         }
         self.matrix_array[0].push(x);
         self.matrix_array[1].push(y);
         self.matrix_array[2].push(z);
-        self.matrix_array[3].push(1);
+        self.matrix_array[3].push(1.0);
     }
 }

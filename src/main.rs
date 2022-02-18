@@ -7,14 +7,35 @@ mod color;
 mod matrix;
 mod draw;
 
+const XRES: i32 = 500;
+const YRES: i32 = 500;
+
 fn main(){
-    let mut matrix1 = Matrix::new(4,4);
-    matrix1.matrix_array = vec![vec![1,2,3],vec![4,5,6]];
-    let mut matrix2 = Matrix::new(4,4);
-    matrix2.matrix_array = vec![vec![7,8],vec![9,10],vec![11,12]];
-    matrix2.multiply_matrixes(matrix1);
-    println!("{}", matrix2);
-    matrix2 = Matrix::new(4,4);
-    matrix2.identity();
-    println!("{}", matrix2);
+    let mut image = Image::new(500, 500);
+    let mut color = Color::new();
+    let mut m1 = Matrix::new(4,4);
+    let mut m2 = Matrix::new(0,0);
+    let mut edges = Matrix::new(1,0);
+
+    println!("Testing add_edge. Adding (1, 2, 3), (4, 5, 6) m2 =");
+    m2.add_edge(1,2,3,4,5,6);
+    m2.print_matrix();
+
+    println!("Testing ident. m1 = ");
+    m1.identity();
+    m1.print_matrix();
+
+    println!("Testing matrix_mult. m1 * m2 =");
+    m2.multiply_matrixes(m1);
+    m2.print_matrix();
+
+    println!("Testing Matrix mult. m1 =");
+    m1 = Matrix::new(0,0);
+    m1.add_edge(1,2,3,4,5,6);
+    m1.add_edge(7,8,9,10,11,12);
+    m1.print_matrix();
+
+    println!("\nTesting Matrix mult. m1 * m2 =");
+    m2.multiply_matrixes(m1);
+    m2.print_matrix();
 }

@@ -6,12 +6,11 @@ pub struct Matrix{
 
 impl Matrix{
     pub fn new(row: usize, col: usize) -> Matrix{
-        Matrix{matrix_array: vec![vec![0; row]; col],}
+        Matrix{matrix_array: vec![vec![0; col]; row],}
     }
 
     pub fn multiply_matrixes(&mut self, m1: Matrix){
         let mut matrix_result = Matrix::new(m1.matrix_array.len(), self.matrix_array[0].len());
-        println!("{}", matrix_result);
         for result_i in 0..matrix_result.matrix_array.len(){
             for result_v in 0..matrix_result.matrix_array[result_i].len(){
                 for m2_down_num in 0..self.matrix_array.len(){
@@ -33,6 +32,10 @@ impl Matrix{
                 }
             }
         }
+    }
+
+    pub fn print_matrix(&self){
+        println!("{}", self);
     }
 }
 

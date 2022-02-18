@@ -1,6 +1,6 @@
-use draw_line::Image;
+use image::Image;
 use color::Color;
-mod draw_line;
+mod image;
 mod color;
 
 fn main(){

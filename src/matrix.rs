@@ -4,7 +4,7 @@ struct Matrix{
 
 impl Matrix{
     fn new(row: usize = 4, col: usize = 4) -> Matrix{
-        Matrix{matrix = vec![vec![0; row]; col],}
+        Matrix{matrixArray: vec![vec![0; row]; col],}
     }
 
     fn multiply_matrixes(&self, m1: Matrix){

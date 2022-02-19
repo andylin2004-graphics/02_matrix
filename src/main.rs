@@ -1,7 +1,6 @@
 use image::Image;
 use color::Color;
 use matrix::Matrix;
-use draw::*;
 mod image;
 mod color;
 mod matrix;
@@ -11,8 +10,8 @@ const XRES: i32 = 500;
 const YRES: i32 = 500;
 
 fn main(){
-    let mut image = Image::new(500, 500);
-    let mut color = Color::new();
+    let mut image = Image::new(XRES as usize, YRES as usize);
+    let mut color = Color::new_color(0, 255, 0);
     let mut m1 = Matrix::new(4,4);
     let mut m2 = Matrix::new(0,0);
     let mut edges = Matrix::new(1,0);
@@ -38,4 +37,27 @@ fn main(){
     println!("\nTesting Matrix mult. m1 * m2 =");
     m2.multiply_matrixes(m1);
     m2.print_matrix();
+
+    edges.add_edge(50.0, 450.0, 0.0, 100.0, 450.0, 0.0);
+    edges.add_edge(50.0, 450.0, 0.0, 50.0, 400.0, 0.0);
+    edges.add_edge(100.0, 450.0, 0.0, 100.0, 400.0, 0.0);
+    edges.add_edge(100.0, 400.0, 0.0, 50.0, 400.0, 0.0);
+
+    edges.add_edge(200.0, 450.0, 0.0, 250.0, 450.0, 0.0);
+    edges.add_edge(200.0, 450.0, 0.0, 200.0, 400.0, 0.0);
+    edges.add_edge(250.0, 450.0, 0.0, 250.0, 400.0, 0.0);
+    edges.add_edge(250.0, 400.0, 0.0, 200.0, 400.0, 0.0);
+
+    edges.add_edge(150.0, 400.0, 0.0, 130.0, 360.0, 0.0);
+    edges.add_edge(150.0, 400.0, 0.0, 170.0, 360.0, 0.0);
+    edges.add_edge(130.0, 360.0, 0.0, 170.0, 360.0, 0.0);
+
+    edges.add_edge(100.0, 340.0, 0.0, 200.0, 340.0, 0.0);
+    edges.add_edge(100.0, 320.0, 0.0, 200.0, 320.0, 0.0);
+    edges.add_edge(100.0, 340.0, 0.0, 100.0, 320.0, 0.0);
+    edges.add_edge(200.0, 340.0, 0.0, 200.0, 320.0, 0.0);  
+
+    image.draw_lines(edges, color);
+
+    image.create_file("bob.ppm".to_owned());
 }

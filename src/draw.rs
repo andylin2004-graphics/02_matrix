@@ -3,12 +3,6 @@ use crate::Matrix;
 use crate::Color;
 
 impl Image{
-    pub fn draw_lines(&mut self, matrix: Matrix, color: Color){
-        for i in (0..matrix.matrix_array[0].len()).step_by(2){
-            self.draw_line(matrix.matrix_array[0][i] as i32, matrix.matrix_array[1][i] as i32, matrix.matrix_array[0][i+1] as i32, matrix.matrix_array[1][i+1] as i32, color);
-        }
-    }
-
     pub fn draw_line(&mut self, mut x0: i32, mut y0: i32, mut x1: i32, mut y1: i32, color: Color){
         if x0 > x1{
             let mut tmp = x0;
@@ -83,6 +77,12 @@ impl Image{
                 x += 1;
                 d -= a; // basically adding
             }
+        }
+    }
+
+    pub fn draw_lines(&mut self, matrix: Matrix, color: Color){
+        for i in (0..matrix.matrix_array[0].len()).step_by(2){
+            self.draw_line(matrix.matrix_array[0][i] as i32, matrix.matrix_array[1][i] as i32, matrix.matrix_array[0][i+1] as i32, matrix.matrix_array[1][i+1] as i32, color);
         }
     }
 }

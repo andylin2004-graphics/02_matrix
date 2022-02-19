@@ -92,14 +92,8 @@ impl Matrix{
         if self.matrix_array.len() < 4{
             *self = Matrix::new(4,0);
         }
-        self.matrix_array[0].push(x0);
-        self.matrix_array[0].push(x1);
-        self.matrix_array[1].push(y0);
-        self.matrix_array[1].push(y1);
-        self.matrix_array[2].push(z0);
-        self.matrix_array[2].push(z1);
-        self.matrix_array[3].push(1.0);
-        self.matrix_array[3].push(1.0);
+        self.add_point(x0,y0,z0);
+        self.add_point(x1,y1,z1);
     }
 
     pub fn add_point(&mut self, x: f32, y: f32, z: f32){

@@ -11,7 +11,7 @@ const YRES: i32 = 500;
 
 fn main(){
     let mut image = Image::new(XRES as usize, YRES as usize);
-    let mut color = Color::new_color(0, 255, 0);
+    let color = Color::new_color(0, 255, 0);
     let mut m1 = Matrix::new(4,4);
     let mut m2 = Matrix::new(0,0);
     let mut edges = Matrix::new(1,0);

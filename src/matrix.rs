@@ -1,7 +1,7 @@
 use std::fmt;
 
 pub struct Matrix{
-    pub matrix_array: Vec<Vec<f32>>,
+    pub(in crate) matrix_array: Vec<Vec<f32>>,
 }
 
 impl Matrix{

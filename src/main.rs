@@ -11,7 +11,7 @@ const YRES: i32 = 500;
 
 fn main(){
     let mut image = Image::new(XRES as usize, YRES as usize);
-    let color = Color::new_color(0, 255, 0);
+    let mut color = Color::new_color(0, 255, 0);
     let mut m1 = Matrix::new(4,4);
     let mut m2 = Matrix::new(0,0);
     let mut edges = Matrix::new(1,0);
@@ -60,4 +60,21 @@ fn main(){
     image.draw_lines(edges, color);
 
     image.create_file("bob.ppm".to_owned());
+
+    image = Image::new(300, 400);
+    edges = Matrix::new(4,4);
+    color.g = 0;
+    color.r = 255;
+
+    for i in 0..20{
+        for v in (0..60).step_by(20){
+            edges.add_edge_int(0,i+v,0,image.width as i32 - 1,i+v, 0);
+        }
+        edges.add_edge_int(i,0,0,i,image.height as i32 - 1, 0);
+        edges.add_edge_int(0,image.height as i32 - 1 - i,0,image.width as i32 - 1,image.height as i32 - 1 - i, 0);
+        edges.add_edge_int(image.width as i32 - 1 - i,0,0,image.width as i32 - 1 - i,image.height as i32 - 1, 0);
+    }
+
+    image.draw_lines(edges, color);
+    image.create_file("rubensim.ppm".to_owned());
 }

@@ -96,6 +96,14 @@ impl Matrix{
         self.add_point(x1,y1,z1);
     }
 
+    pub fn add_edge_int(&mut self, x0: i32, y0: i32, z0: i32, x1: i32, y1: i32, z1: i32){
+        if self.matrix_array.len() < 4{
+            *self = Matrix::new(4,0);
+        }
+        self.add_point(x0 as f32,y0 as f32,z0 as f32);
+        self.add_point(x1 as f32,y1 as f32,z1 as f32);
+    }
+
     pub fn add_point(&mut self, x: f32, y: f32, z: f32){
         if self.matrix_array.len() < 4{
             *self = Matrix::new(4,0);

@@ -5,23 +5,23 @@ use crate::Color;
 
 pub struct Image{
     pub screen: Vec<Vec<Color>>,
-    image_height: usize,
-    image_width: usize,
+    pub height: usize,
+    pub width: usize,
 }
 
 impl Image{
     pub fn new(image_width: usize, image_height: usize) -> Image{
-        Image{screen: vec![vec![Color::new(); image_width]; image_height], image_width: image_width, image_height: image_height}
+        Image{screen: vec![vec![Color::new(); image_width]; image_height], width: image_width, height: image_height}
     }
 
     pub fn plot(&mut self, x: i32, y: i32, color: Color){
         if x >= 0 && y >= 0{
-            self.screen[(self.image_height - 1) - y as usize][x as usize].plot_color(color);
+            self.screen[(self.height - 1) - y as usize][x as usize].plot_color(color);
         }
     }
 
     fn create_data(&self) -> String{
-        let mut result: String = format!("P3\n{} {}\n255\n", self.screen.len(), self.screen[0].len());
+        let mut result: String = format!("P3\n{} {}\n255\n", self.screen[0].len(), self.screen.len());
      
         for i in 0..self.screen.len(){
             for v in 0..self.screen[i].len(){

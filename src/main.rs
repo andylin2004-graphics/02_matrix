@@ -128,5 +128,16 @@ fn main() {
     }
 
     image.draw_lines(edges, color);
+    color.r = 0;
+    color.g = 0;
+    color.b = 0;
+
+    edges = Matrix::new(4, 4);
+    edges.add_edge_int(90, 325, 0, 90, 275, 0);
+    edges.add_edge_int(210, 325, 0, 210, 275, 0);
+    edges.add_edge_int(65, 150, 0, 65, 120, 0);
+    edges.add_edge_int(235, 150, 0, 235, 120, 0);
+    edges.add_edge_int(65, 120, 0, 235, 120, 0);
+    image.draw_lines(edges, color);
     image.create_file("rubensim.ppm".to_owned());
 }

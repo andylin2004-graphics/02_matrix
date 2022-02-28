@@ -65,3 +65,5 @@ dkms.conf
 # Added by cargo
 
 /target
+
+.DS_Store

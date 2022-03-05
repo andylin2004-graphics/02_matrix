@@ -62,7 +62,7 @@ fn main() {
     image.create_file("bob.ppm".to_owned());
 
     image = Image::new(300, 400);
-    edges = Matrix::new(4, 4);
+    edges = Matrix::new(0, 0);
     color.r = 255;
     color.b = 255;
     for i in 0..image.width as i32 {
